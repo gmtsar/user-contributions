@@ -1,15 +1,14 @@
 # required packages:
 gdal  
 os  
-**Enter**
-rasterio**Enter**
-xml.etree**Enter**
-numpy**Enter**
-datetime**Enter**
-math**Enter**
-subprocess**Enter**
-shutil**Enter**
-glob**Enter**
+rasterio  
+xml.etree  
+numpy  
+datetime  
+math  
+subprocess  
+shutil  
+glob  
 
 # sample usage:
 
