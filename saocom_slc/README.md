@@ -25,7 +25,24 @@ This will automatically iterate through all the .xemt files and data folders and
 
 ![2](2.png)
 
-The script by default reads to GMTSAR all the available polarimetric channels, for all the images. The user can specify the polarization/s to be processed by the optional parameter _polarizations_ in the form of a list. For example ['HH','VV']
+The script by default reads to GMTSAR all the available polarimetric channels, for all the images. The user can specify the polarization/s to be processed by the optional parameter _polarizations_ in the format of a list. For example ['HH','VV']:
+
+    >>> python 3 -i saocom_sm_slc.py
+    >> read_saocom(polarizations = ['HH','VV'])
+
+The script will only run for the selected polarimetric channels:
+
+![3](3.png)
+
+Sample SAOCOM SLC data can be downloaded from CONAE website: https://catalogos.conae.gov.ar/catalogo/catalogoSatSaocomAdel.html , in particular, the SLC pair suitable for SAR Interferometry is the following:
+
+![4](4.png)
+
+Link to the master image: https://catalogos.conae.gov.ar/catalogo/redirect.aspx?url=docs/SAOCOM/master.zip
+Link to the slave image: https://catalogos.conae.gov.ar/catalogo/redirect.aspx?url=docs/SAOCOM/slave.zip
+
+
+
 
 
 
