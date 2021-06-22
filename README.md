@@ -1,6 +1,6 @@
 # required packages:
-gdal.(Enter)
-os
+gdal  
+os  
 **Enter**
 rasterio**Enter**
 xml.etree**Enter**
