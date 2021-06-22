@@ -25,6 +25,8 @@ This will automatically iterate through all the .xemt files and data folders and
 
 ![2](2.png)
 
+The script by default reads to GMTSAR all the available polarimetric channels, for all the images. The user can specify the polarization/s to be processed by the optional parameter _polarizations_ in the form of a list. For example ['HH','VV']
+
 
 
 
