@@ -21,5 +21,9 @@ This script uses a class saocom_sm_slc and a function read_saocom that are used 
     >>> python 3 -i saocom_sm_slc.py
     >> read_saocom()
     
-This will automatically iterate through all the .xemt files and data folders and will create a directory for each polarization channel with the corresponding PRM,LED and SLC files.
+This will automatically iterate through all the .xemt files and data folders and will create a directory for each polarization channel with the corresponding PRM,LED and SLC files. It is very important that the original information (with no modifications) is placed within the same folder in order to get this code to work properly.
+
+
+
+
 
