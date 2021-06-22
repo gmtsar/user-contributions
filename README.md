@@ -1,6 +1,5 @@
 # required packages:
-gdal
-**Enter**
+gdal.(Enter)
 os
 **Enter**
 rasterio**Enter**
