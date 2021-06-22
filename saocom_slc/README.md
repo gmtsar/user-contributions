@@ -1,10 +1,29 @@
-# user-contributions
-For advanced users to maintain and share their codes to the InSAR community
+# required packages:
+gdal  
+os  
+rasterio  
+xml.etree  
+numpy  
+datetime  
+math  
+subprocess  
+shutil  
+glob  
 
-If you plan to share your codes here, make a pull request, create your own folder of package, write a README.md and specify the installation, usage, etc. 
-We'll merge your codes to the user-contributions and advertise it to the GMTSAR user-list.
+# sample usage:
 
-Any suggestions are welcome!
+This is a first version of the script for testing. In order to try it, the .py file should be place in the same folder of the SAOCOM .xemt files and unzipped data folders:
 
-# active packages
+![1](saocom_slc/1.png)
+
+This script uses a class saocom_sm_slc and a function read_saocom that are used to read SAOCOM-1 Stripmap Data in SLC format to GMTSAR.  To test it, it can be run in interactive mode from the linux terminal.
+
+    >>> python 3 -i saocom_sm_slc.py
+    >> read_saocom()
+    
+This will automatically iterate through all the .xemt files and data folders and will create a directory for each polarization channel with the corresponding PRM,LED and SLC files. It is very important that the original information (with no modifications) is placed within the same folder in order to get this code to work properly.
+
+
+
+
 
