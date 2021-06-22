@@ -16,4 +16,10 @@ This is a first version of the script for testing. In order to try it, the .py f
 
 ![1](saocom_slc/1.png)
 
+This script uses a class saocom_sm_slc and a function read_saocom that are used to read SAOCOM-1 Stripmap Data in SLC format to GMTSAR.  To test it, it can be run in interactive mode from the linux terminal.
+
+    >>> python 3 -i saocom_sm_slc.py
+    >> read_saocom()
+    
+This will automatically iterate through all the .xemt files and data folders and will create a directory for each polarization channel with the corresponding PRM,LED and SLC files.
 
