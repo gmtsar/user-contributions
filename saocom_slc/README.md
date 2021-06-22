@@ -34,6 +34,12 @@ The script will only run for the selected polarimetric channels:
 
 ![3](3.png)
 
+The output files are named according to the platform (SAO1A or SAO1B) the acquisition date (YYYYMMDD format) and the polarization chanel (HH / VV / VH / HV):
+
+![5](5.png)
+
+# sample data for download:
+
 Sample SAOCOM SLC data can be downloaded from CONAE website: https://catalogos.conae.gov.ar/catalogo/catalogoSatSaocomAdel.html , in particular, the SLC pair suitable for SAR Interferometry is the following:
 
 ![4](4.png)
