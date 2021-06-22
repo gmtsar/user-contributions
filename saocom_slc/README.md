@@ -1,3 +1,7 @@
+# Description:
+
+This is a python script that reads SAOCOM-1 Stripmap images in L1A (SLC) level to the format of GMTSAR
+
 # required packages:
 gdal  
 os  
