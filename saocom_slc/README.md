@@ -1,3 +1,9 @@
+SAOCOM-1 Reader
+------
+Santiago Seppi, Comisión Nacional de Actividades Espaciales (CONAE, Argentina)
+
+Last updated: June 2021
+
 # Description:
 
 This is a python script that reads SAOCOM-1 Stripmap images in L1A (SLC) level to the format of GMTSAR
@@ -48,8 +54,9 @@ Sample SAOCOM SLC data can be downloaded from CONAE website: https://catalogos.c
 
 ![4](4.png)
 
-Link to the reference image: https://catalogos.conae.gov.ar/catalogo/redirect.aspx?url=docs/SAOCOM/master.zip  
-Link to the repeat image: https://catalogos.conae.gov.ar/catalogo/redirect.aspx?url=docs/SAOCOM/slave.zip
+[Link to the reference image](https://catalogos.conae.gov.ar/catalogo/redirect.aspx?url=docs/SAOCOM/master.zip)  
+[Link to the repeat image](https://catalogos.conae.gov.ar/catalogo/redirect.aspx?url=docs/SAOCOM/slave.zip)
+
 
 
 
