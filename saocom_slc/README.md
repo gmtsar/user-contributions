@@ -4,11 +4,11 @@ Santiago Seppi, Comisión Nacional de Actividades Espaciales (CONAE, Argentina)
 
 Last updated: June 2021
 
-# description:
+# Description:
 
 This is a python script that reads SAOCOM-1 Stripmap images in L1A (SLC) level to the format of GMTSAR
 
-# required packages:
+# Required packages:
 gdal  
 os  
 rasterio  
@@ -20,7 +20,7 @@ subprocess
 shutil  
 glob  
 
-# sample usage:
+# Sample usage:
 
 This is a first version of the script for testing. In order to try it, the .py file should be placed in the same folder of the SAOCOM .xemt files and unzipped data folders:
 
@@ -48,7 +48,7 @@ The output files are named according to the platform (SAO1A or SAO1B) the acquis
 
 ![5](5.png)
 
-# sample data for download:
+# Sample data for download:
 
 Sample SAOCOM SLC data can be downloaded from CONAE website: https://catalogos.conae.gov.ar/catalogo/catalogoSatSaocomAdel.html , in particular, the SLC pair suitable for SAR Interferometry is the following:
 
