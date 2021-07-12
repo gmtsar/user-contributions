@@ -2,7 +2,7 @@
 For advanced users to maintain and share their codes to the InSAR community.
 
 ## Creating your package
-Make a pull request and create a folder with your package name. Add your codes/scripts to the package and write a README.md file to describe
+Make a pull request and create a folder with your package name. Add your codes/scripts to the package and write a README.md file.
 1) Description of the package
 2) Dependicies
 3) How to install
