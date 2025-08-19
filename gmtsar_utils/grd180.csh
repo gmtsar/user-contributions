@@ -6,6 +6,7 @@ if ($#argv != 1) then
   echo ""
   echo "    shift grid from 0 360 to -180 180"
   echo ""
+  exit 1
 endif
 
 set lon1 = `gmt grdinfo $1 -C | awk '{printf("%.12f", $2-360.0)}'`
