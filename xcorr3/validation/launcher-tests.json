@@ -1,0 +1,10 @@
+{
+  "platform": "Windows PowerShell / Python 3.12.3",
+  "passed": true,
+  "tests": 33,
+  "scope": "portable launcher tests; see validation/full for real Linux backend tests",
+  "source_sha256": {
+    "xcorr3": "7d13aff3c7a0ee8746d6bbd23ffa1c39edbffd9eff94c9ba78dc644c70d55de8",
+    "test/test_xcorr3.py": "ccd558889f0192475372a723672c6627aa0a40f24da8dc320ef2222d2d9b88cd"
+  }
+}

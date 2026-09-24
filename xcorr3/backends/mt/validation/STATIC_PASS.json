@@ -1,0 +1,35 @@
+{
+  "status": "PASS for controlled full-scene validation",
+  "core_functions_unchanged_except_allocation_checks": {
+    "do_range_interpolate": true,
+    "assign_values": true,
+    "make_mask": true,
+    "allocate_arrays": true
+  },
+  "partition_coverage": "exact disjoint union, counts 1..32 and 1/2/7/96/1000/4000 points",
+  "compiler_command": [
+    "gcc",
+    "-std=c99",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fanalyzer",
+    "-I/usr/include/gmt",
+    "-I/usr/local/GMTSAR/gmtsar",
+    "-c",
+    "/mnt/e/#Post/user-contributions/xcorr_mt/xcorr_mt.c",
+    "-o",
+    "/home/tjz/xcorr-mt-validation-20260923/build/static.o"
+  ],
+  "source_sha256": "18baed5d4466418528f8d7b6319c988f4293ca4b62a7c1b6771eca26ed3c0ac0",
+  "binary_sha256": "ffb0bcff7e7ad28aff50c152968da407f760f54c1f560c2e19e9e78be26f392d",
+  "original_binary_sha256": "4158d29678bbf79e69083cf511eba1639a862fe164b6a3b101c418146538f33c",
+  "gmtsar_library_sha256": "7b49161eb5dece78e873be9ecc3d6ee132baf57c907dfeafc1fcd43e90be3489",
+  "limitations": [
+    "Inherited GMTSAR highres_corr skips negative indices without initializing md; edge-peak numerical equivalence must be tested, not universally promised.",
+    "Existing GMTSAR parser/readers assume valid short paths, dimensions and complete files; validation harness must check these before execution.",
+    "GCC analyzer covers this translation unit, not precompiled GMTSAR/GMT.",
+    "Installed GMTSAR has a pre-existing unrelated update_PRM_sub.c modification; baseline executable is copied unchanged."
+  ]
+}

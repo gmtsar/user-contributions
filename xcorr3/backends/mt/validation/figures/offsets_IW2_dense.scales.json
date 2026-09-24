@@ -1,0 +1,68 @@
+[
+  {
+    "component": "Range",
+    "method": "CPU",
+    "low": -19.625,
+    "high": -17.906,
+    "below": 34,
+    "above": 25,
+    "minimum": -81.312,
+    "maximum": 48.0,
+    "rows": 4000
+  },
+  {
+    "component": "Range",
+    "method": "MT",
+    "low": -19.625,
+    "high": -17.906,
+    "below": 34,
+    "above": 25,
+    "minimum": -81.312,
+    "maximum": 48.0,
+    "rows": 4000
+  },
+  {
+    "component": "Range",
+    "method": "MT minus CPU",
+    "low": -0.0625,
+    "high": 0.0625,
+    "below": 0,
+    "above": 0,
+    "minimum": 0.0,
+    "maximum": 0.0,
+    "rows": 4000
+  },
+  {
+    "component": "Azimuth",
+    "method": "CPU",
+    "low": -1.25,
+    "high": -1.0,
+    "below": 3,
+    "above": 7,
+    "minimum": -125.625,
+    "maximum": 130.375,
+    "rows": 4000
+  },
+  {
+    "component": "Azimuth",
+    "method": "MT",
+    "low": -1.25,
+    "high": -1.0,
+    "below": 3,
+    "above": 7,
+    "minimum": -125.625,
+    "maximum": 130.375,
+    "rows": 4000
+  },
+  {
+    "component": "Azimuth",
+    "method": "MT minus CPU",
+    "low": -0.0625,
+    "high": 0.0625,
+    "below": 0,
+    "above": 0,
+    "minimum": 0.0,
+    "maximum": 0.0,
+    "rows": 4000
+  }
+]

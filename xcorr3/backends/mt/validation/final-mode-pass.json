@@ -1,0 +1,1 @@
+{"status": "PASS", "cases": 55, "original_sha256": "4158d29678bbf79e69083cf511eba1639a862fe164b6a3b101c418146538f33c", "candidate_sha256": "ffb0bcff7e7ad28aff50c152968da407f760f54c1f560c2e19e9e78be26f392d", "nointerp_oracle": "known integer translation; stock uninitialized-fraction discrepancy retained"}

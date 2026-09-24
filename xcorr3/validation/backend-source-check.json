@@ -1,0 +1,8 @@
+{
+  "mt/xcorr_mt.c": true,
+  "cc/xcorr_cc.cu": true,
+  "cc/xcorr2_args.c": true,
+  "cc/prm_helper.c": true,
+  "cc/xcorr_io.h": true,
+  "cc/xcorr_postprocess.cpp": true
+}

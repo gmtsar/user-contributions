@@ -1,0 +1,25 @@
+{
+  "all_pass": true,
+  "actual_correlation_cases": [
+    {
+      "case": "original_frequency",
+      "rows": 35,
+      "byte_equal_to_reference": true,
+      "output_sha256": "93b296e425acf53bc36004029adfe1a50ce4ff7072d9b9987401dc084a30084a"
+    },
+    {
+      "case": "mt_frequency",
+      "rows": 35,
+      "byte_equal_to_reference": true,
+      "output_sha256": "93b296e425acf53bc36004029adfe1a50ce4ff7072d9b9987401dc084a30084a"
+    },
+    {
+      "case": "mt_nointerp",
+      "rows": 35,
+      "byte_equal_to_reference": true,
+      "output_sha256": "4f7c18d3a43cb2efff7a7224aa231c787cc27e4b30943dc4eb2d00d9de2dd0a5"
+    }
+  ],
+  "launcher_sha256": "3f63fdf3a57cfd37aeb266282e7bce24df37e7aae0e26a6b4f7bd5d46297d54a",
+  "scope": "real csh child and real xcorr binaries; not a full p2p/TOPS run"
+}

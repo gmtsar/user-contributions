@@ -1,0 +1,254 @@
+{
+  "pass": true,
+  "binary_sha256": "384eab50e7e647fb4c0fc9fa51f17559ddfac1d8751914ecd4b80ba5bf23fd62",
+  "cases": [
+    {
+      "name": "unknown",
+      "pass_": true,
+      "expected_error": "-typo",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-typo"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr_cc: unknown option or missing/unexpected value near '-typo'\n"
+    },
+    {
+      "name": "missing_value",
+      "pass_": true,
+      "expected_error": "-ny",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-ny"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr_cc: unknown option or missing/unexpected value near '-ny'\n"
+    },
+    {
+      "name": "wrapped_integer",
+      "pass_": true,
+      "expected_error": "-nx requires an integer",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-nx",
+        "4294967297"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr_cc: -nx requires an integer in [1, 2147483647]\n"
+    },
+    {
+      "name": "empty_key",
+      "pass_": true,
+      "expected_error": "empty key",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr_cc: PRM master.PRM:1: empty key\n"
+    },
+    {
+      "name": "missing_path",
+      "pass_": true,
+      "expected_error": "SLC_file",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr_cc: PRM master.PRM: missing required field 'SLC_file'\n"
+    },
+    {
+      "name": "range_shift_bounds",
+      "pass_": true,
+      "expected_error": "range sampling grid",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: Original GMTSAR range sampling grid would exceed the slave image bounds with the current PRM shifts/stretch. xcorr3 no longer changes the sampling grid silently. Reduce nx/ny, reduce xsearch/ysearch, or rerun with -noshift for pixel tracking on already aligned SLCs.\n"
+    },
+    {
+      "name": "azimuth_shift_bounds",
+      "pass_": true,
+      "expected_error": "azimuth sampling grid",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: Original GMTSAR azimuth sampling grid would exceed the slave image bounds with the current PRM shifts/stretch. xcorr3 no longer changes the sampling grid silently. Reduce nx/ny, reduce xsearch/ysearch, or rerun with -noshift for pixel tracking on already aligned SLCs.\n"
+    },
+    {
+      "name": "stretch_bounds",
+      "pass_": true,
+      "expected_error": "azimuth sampling grid",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: Original GMTSAR azimuth sampling grid would exceed the slave image bounds with the current PRM shifts/stretch. xcorr3 no longer changes the sampling grid silently. Reduce nx/ny, reduce xsearch/ysearch, or rerun with -noshift for pixel tracking on already aligned SLCs.\n"
+    },
+    {
+      "name": "invalid_stretch",
+      "pass_": true,
+      "expected_error": "invalid azimuth stretch",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr_cc: PRF ratio produces an invalid azimuth stretch\n"
+    },
+    {
+      "name": "cancelled_stretch_overflow",
+      "pass_": true,
+      "expected_error": "PRF stretch exceeds the azimuth index range",
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-ny",
+        "1"
+      ],
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: PRF stretch exceeds the azimuth index range\n"
+    },
+    {
+      "name": "normal",
+      "pass_": true,
+      "expected_error": null,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-nointerp"
+      ],
+      "returncode": 0,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\n\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\n"
+    },
+    {
+      "name": "paths_with_spaces",
+      "pass_": true,
+      "expected_error": null,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release-adapters/cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-nointerp"
+      ],
+      "returncode": 0,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\n\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\n"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+test_actual_process_and_argument_boundaries (__main__.LauncherTests.test_actual_process_and_argument_boundaries) ... ok
+test_backend_before_and_after_inputs (__main__.LauncherTests.test_backend_before_and_after_inputs) ... ok
+test_backend_discovery (__main__.LauncherTests.test_backend_discovery) ... ok
+test_cc_only_options (__main__.LauncherTests.test_cc_only_options) ... ok
+test_cc_unsupported_modes (__main__.LauncherTests.test_cc_unsupported_modes) ... ok
+test_child_status_and_signal (__main__.LauncherTests.test_child_status_and_signal) ... ok
+test_cli_backend_overrides_config (__main__.LauncherTests.test_cli_backend_overrides_config) ... ok
+test_config_comments_bom_and_unrelated_fields (__main__.LauncherTests.test_config_comments_bom_and_unrelated_fields) ... ok
+test_config_selection (__main__.LauncherTests.test_config_selection) ... ok
+test_default_original (__main__.LauncherTests.test_default_original) ... ok
+test_duplicate_workers (__main__.LauncherTests.test_duplicate_workers) ... ok
+test_empty_config_defaults (__main__.LauncherTests.test_empty_config_defaults) ... ok
+test_environment_unchanged (__main__.LauncherTests.test_environment_unchanged) ... ok
+test_explicit_frequency_mode (__main__.LauncherTests.test_explicit_frequency_mode) ... ok
+test_help_without_installation (__main__.LauncherTests.test_help_without_installation) ... ok
+test_installed_sibling_precedes_path (__main__.LauncherTests.test_installed_sibling_precedes_path) ... ok
+test_invalid_and_duplicate_config (__main__.LauncherTests.test_invalid_and_duplicate_config) ... ok
+test_invalid_workers (__main__.LauncherTests.test_invalid_workers) ... ok
+test_missing_config (__main__.LauncherTests.test_missing_config) ... ok
+test_missing_input_prints_complete_usage (__main__.LauncherTests.test_missing_input_prints_complete_usage) ... ok
+test_missing_option_value (__main__.LauncherTests.test_missing_option_value) ... ok
+test_native_worker_after_separator (__main__.LauncherTests.test_native_worker_after_separator) ... ok
+test_no_fallback_on_missing_executable (__main__.LauncherTests.test_no_fallback_on_missing_executable) ... ok
+test_original_proposed_separator_syntax (__main__.LauncherTests.test_original_proposed_separator_syntax) ... ok
+test_parameter_passthrough_and_space_paths (__main__.LauncherTests.test_parameter_passthrough_and_space_paths) ... ok
+test_real_cli_missing_arguments (__main__.LauncherTests.test_real_cli_missing_arguments) ... ok
+test_windows_workflow_rejected (__main__.LauncherTests.test_windows_workflow_rejected) ... skipped 'Windows-specific platform guard'
+test_worker_override_and_auto (__main__.LauncherTests.test_worker_override_and_auto) ... ok
+test_workers_rejected_for_other_backends (__main__.LauncherTests.test_workers_rejected_for_other_backends) ... ok
+test_workflow_contract (__main__.LauncherTests.test_workflow_contract) ... ok
+test_workflow_dry_run (__main__.LauncherTests.test_workflow_dry_run) ... ok
+test_workflow_missing_or_mixed_inputs (__main__.LauncherTests.test_workflow_missing_or_mixed_inputs) ... ok
+test_workflow_shim_dispatch_and_cleanup (__main__.LauncherTests.test_workflow_shim_dispatch_and_cleanup) ... [xcorr3] intercepted xcorr failed (exit 9)
+ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 1.657s
+
+OK (skipped=1)

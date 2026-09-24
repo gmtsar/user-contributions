@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "name": "normal",
+      "pass_": true,
+      "returncode": 0,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\n\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\n"
+    },
+    {
+      "name": "write_limit",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\n\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\nxcorr3: flush /home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-entry-output/write_limit/.xcorr_cc-tV4qPe/freq_xcorr.dat: File too large\n"
+    },
+    {
+      "name": "missing_trans",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\n\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\nxcorr3: -geocode requires readable trans.dat: No such file or directory\n"
+    },
+    {
+      "name": "directory",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: output target is not a regular file: /home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-entry-output/directory/freq_xcorr.dat\n"
+    },
+    {
+      "name": "device_symlink",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: output target is not a regular file: /home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-entry-output/device_symlink/freq_xcorr.dat\n"
+    },
+    {
+      "name": "unwritable",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "[xcorr3] backend=cc executable=/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc\nxcorr3: create output staging directory: Permission denied\n"
+    }
+  ]
+}
