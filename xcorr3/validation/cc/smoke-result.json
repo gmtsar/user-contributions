@@ -1,0 +1,124 @@
+{
+  "passed": true,
+  "workspace": "/home/tjz/xcorr-cc-pr-smoke-616t9ejf",
+  "source": "/mnt/e/#Post/user-contributions-xcorr-cc/xcorr_cc",
+  "binary_sha256": "927bfc6e3322db6b22927ba4ac453fd212107e6c46565fb07549acc23a16bc45",
+  "source_sha256": {
+    ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+    ".gitignore": "3557062b435c0e4abd5519068204853c88ff03b7723877f55a1c811492e36b3a",
+    "array_helper.c": "9ada84123581b58cd97f1ff3d96786943903c261b25d36b928faa25567f74052",
+    "build_local.sh": "2657db5ab920265649fdb5e866beed3b35a1cc05e8d90d16d372c4fab66d448b",
+    "detect_arch.cu": "fea97613e075fc3f722c5971e7ee5c63a54b4b4d2ada249eb57ba321be72b9b6",
+    "fft_helper.c": "a8cca866e220421942a3030471260021ee2b2ace5e62ec1e5aa4ed5af0ed055a",
+    "LICENSE": "85ec85d6d008ba16b9c03be06168b305f476ded195a2e31dea47dcecd7c041fb",
+    "Makefile": "4ad6c1e4ffc082b0f5674ec9a0a57e8748d7f3436dcb928cbd4190e4d784f2cf",
+    "pot_geocode.csh": "de196b5cab3b36b3209a9a610d740b6bc37357a217d1155a331784e44b6216b7",
+    "pot_merge.csh": "e271b5924c367e4b0f07fed43b1a0a187150f44d94de4e3842ca1ab66675e1e0",
+    "prm_helper.c": "772b3f7ae501f7ade6741737f6f809bbf03421a0bf00452c1afd95c183df1a49",
+    "README.md": "967241b6a958f9af4e4093dd0cd8f24c7a0733982b93dd6806a6a761bb3414bc",
+    "README.zh-CN.md": "dd368439f87149b2d97f12166901920953a9f6b685cd54e82b6fe0d68280afa9",
+    "xcorr2.h": "4921960ff5c23f844b154f077ef83bc4caad1a8b42b885fc91ced91d7f4e3582",
+    "xcorr2_args.c": "a826912cc3771727a879b32c4fe69aef0dd2ef2296a2cc2987ee30b596bf4876",
+    "xcorr2_args.h": "5c6cbb6fd6ad3c2e8c83fdd93bb4e569e32021a2ea358bc486f4442726c5a386",
+    "xcorr_cc.cu": "a9b6375b10340d4b4d02314462815ac37db5c0cf99032b8e22c0722d37a0bb26",
+    "xcorr_io.h": "08c43eefdd3ae5e9836e4b48df61ba89542c1404301e3121573a57866bbd64b7",
+    "xcorr_postprocess.cpp": "a6a753f4fbcc4c8781eada0d01211fc954d1b109ac396b853b375701b0f54f5e",
+    "xcorr_postprocess.h": "f8b9d46eb9d5b174cb76f7cf71b850bd56999a647987b3bcdc53404eb3c658f1",
+    "scripts/make_gcc11_compat.sh": "10e7747c1a914d5dcb1d491d5bae880dad011966c17d1da001a57531f2eb963c",
+    "test/output_harness.cpp": "7b143286f801f462982f9e2fc6c0036335da62162f75a1f9066e595f80a46632",
+    "test/parser_harness.c": "49ec056cf3e5071d2379d38e150d0006ceb3a302bd9b6a8a555a92b344ef2586",
+    "test/README.md": "f4accd983d9ba8a78203286672c78d86d58167d6f10292537394dd89c54f8bc5",
+    "test/test_gpu_inputs.py": "0c981bc9d3b74e884310a76801a7399d8acd81126607421dedf5d89bd556a1d2",
+    "test/test_inputs.py": "e39a7c0439772e12413bcc213169146683852afeaccf0d6373a1efbd3136e091",
+    "test/test_outputs.py": "29c714ab1fd06cd5041f8c172489467f831744716bbc2fa6728d7e44ae970434",
+    "test/test_output_binary.py": "7a03efe940a51d6c1dcef87d3ebbd1e5b7eeb4d8c76b6fc2bb3b27e680174fba"
+  },
+  "source_build_match": true,
+  "stages": [
+    {
+      "name": "build",
+      "returncode": 0,
+      "seconds": 6.029065462999995,
+      "command": [
+        "bash",
+        "build_local.sh",
+        "-j2"
+      ]
+    },
+    {
+      "name": "help",
+      "returncode": 0,
+      "seconds": 0.006199691000006169,
+      "command": [
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/source/xcorr_cc",
+        "--help"
+      ]
+    },
+    {
+      "name": "host-output",
+      "returncode": 0,
+      "seconds": 9.088024238000003,
+      "command": [
+        "python3",
+        "test/test_outputs.py",
+        "--work",
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/host",
+        "--real-tools"
+      ]
+    },
+    {
+      "name": "cuda-output",
+      "returncode": 0,
+      "seconds": 2.471898727999985,
+      "command": [
+        "python3",
+        "test/test_output_binary.py",
+        "--binary",
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/source/xcorr_cc",
+        "--fixtures",
+        "/home/tjz/xcorr-mt-validation-20260923/mode-tests-final/fixtures",
+        "--work",
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/outputs"
+      ]
+    },
+    {
+      "name": "cuda-input",
+      "returncode": 0,
+      "seconds": 0.7184563309999987,
+      "command": [
+        "python3",
+        "test/test_gpu_inputs.py",
+        "--binary",
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/source/xcorr_cc",
+        "--fixtures",
+        "/home/tjz/xcorr-mt-validation-20260923/mode-tests-final/fixtures",
+        "--work",
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/inputs"
+      ]
+    },
+    {
+      "name": "dingri",
+      "returncode": 0,
+      "seconds": 2.897102578999977,
+      "command": [
+        "/home/tjz/xcorr-cc-pr-smoke-616t9ejf/source/xcorr_cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "20",
+        "-ny",
+        "50",
+        "-xsearch",
+        "128",
+        "-ysearch",
+        "128"
+      ]
+    }
+  ],
+  "dingri": {
+    "iw": 1,
+    "config": "standard",
+    "rows": 1000,
+    "byte_equal": true
+  }
+}

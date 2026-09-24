@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*.o
+/xcorr_mt
+/xcorr_cc

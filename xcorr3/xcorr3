@@ -1,0 +1,254 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""Select a GMTSAR xcorr backend without replacing the installed xcorr."""
+import argparse
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+
+BACKENDS = {'original': 'xcorr', 'mt': 'xcorr_mt', 'cc': 'xcorr_cc'}
+CC_ONLY = {'geocode', 'no_geocode', 'snr', 'psnr', 'no_blockmedian',
+           'nyquist_split', 'throttle', 'throttle_every'}
+TOPS_SCRIPTS = {'align_tops.csh', 'align_tops_esd.csh',
+                'preproc_batch_tops.csh', 'preproc_batch_tops_esd.csh'}
+
+
+class UsageParser(argparse.ArgumentParser):
+    def error(self, message):
+        self.print_help(sys.stderr)
+        self.exit(2, '\nxcorr3: ' + message + '\n')
+
+
+def worker_count(value):
+    if value == 'auto':
+        return value
+    if not re.fullmatch(r'[0-9]+', value) or not 1 <= int(value) <= 2147483647:
+        raise ValueError('nproc must be auto or an integer in [1, 2147483647]')
+    return str(int(value))
+
+
+def read_config(path):
+    values = {}
+    if path is None:
+        return values
+    for number, raw in enumerate(Path(path).read_text(encoding='utf-8-sig').splitlines(), 1):
+        line = raw.split('#', 1)[0].strip()
+        match = re.match(r'^(xcorr_backend|xcorr_nproc)(?:\s|=|$)', line)
+        if not match:
+            continue
+        key = match.group(1)
+        if '=' not in line or line.split('=', 1)[0].strip() != key or key in values:
+            raise ValueError(f'{path}:{number}: malformed or duplicate {key}')
+        values[key] = line.split('=', 1)[1].strip()
+    if values.get('xcorr_backend') and values['xcorr_backend'] not in BACKENDS:
+        raise ValueError('xcorr_backend must be original, mt or cc')
+    if values.get('xcorr_nproc'):
+        values['xcorr_nproc'] = worker_count(values['xcorr_nproc'])
+    return values
+
+
+def extract_workers(arguments):
+    """Also accept GMTSAR-style -nproc after a -- separator."""
+    result, workers = [], None
+    i = 0
+    while i < len(arguments):
+        arg = arguments[i]
+        if arg in ('-nproc', '--nproc') or arg.startswith(('-nproc=', '--nproc=')):
+            if workers is not None:
+                raise ValueError('provide nproc only once')
+            if '=' in arg:
+                value = arg.split('=', 1)[1]
+            else:
+                i += 1
+                if i == len(arguments):
+                    raise ValueError('nproc requires a value')
+                value = arguments[i]
+            workers = worker_count(value)
+        else:
+            result.append(arg)
+        i += 1
+    return result, workers
+
+
+def backend_arguments(arguments, backend, workers='auto'):
+    args, explicit_workers = extract_workers(arguments)
+    if args and args[0] == '--':
+        args = args[1:]
+        if args and args[0] == 'xcorr':
+            args = args[1:]
+    if len(args) < 2 or args[0].startswith('-') or args[1].startswith('-'):
+        raise ValueError('two input files are required: master.PRM secondary.PRM')
+    options = {arg.lstrip('-').split('=', 1)[0] for arg in args[2:] if arg.startswith('-')}
+    if 'af' in options:
+        raise ValueError('select the backend with --backend, not -af')
+    if backend == 'cc' and options & {'time', 'time4', 'real', 'imag', 'grid'}:
+        raise ValueError('cc does not support time-domain or real/grid input modes')
+    if backend != 'cc' and options & CC_ONLY:
+        raise ValueError('these options require --backend cc: ' + ', '.join(sorted(options & CC_ONLY)))
+    if backend == 'cc':
+        # Stock GMTSAR may request frequency correlation explicitly. CUDA only
+        # implements that mode, but its native parser has no -freq option.
+        args = args[:2] + [arg for arg in args[2:] if arg not in ('-freq', '--freq')]
+    if explicit_workers is not None and backend != 'mt':
+        raise ValueError('nproc applies only to --backend mt')
+    if backend == 'mt':
+        selected = explicit_workers if explicit_workers is not None else workers
+        if selected != 'auto':
+            args += ['-nproc', selected]
+    return args
+
+
+def resolve_backend(backend):
+    name = BACKENDS[backend]
+    home = Path(__file__).resolve().parent
+    candidates = [] if backend == 'original' else [home / name, home / 'backends' / backend / name]
+    for path in candidates:
+        if path.is_file() and os.access(path, os.X_OK):
+            return str(path.resolve())
+    found = shutil.which(name)
+    if not found:
+        raise ValueError(f'{name} executable not found; build/install this backend or update PATH')
+    path = Path(found).resolve()
+    if path == Path(__file__).resolve():
+        raise ValueError('backend resolves to xcorr3 itself; restore the original xcorr')
+    return str(path)
+
+
+def dispatch(arguments, backend, workers, executable):
+    args = backend_arguments(arguments, backend, workers)
+    print(f'[xcorr3] backend={backend} executable={executable}', file=sys.stderr)
+    result = subprocess.run([executable, *args])
+    return result.returncode if result.returncode >= 0 else 128 - result.returncode
+
+
+def validate_workflow(command, backend):
+    if os.environ.get('XCORR3_ACTIVE'):
+        raise ValueError('nested xcorr3 --run calls are not supported')
+    if backend != 'original' and ('S1_TOPS' in command or
+                                  any(Path(x).name in TOPS_SCRIPTS for x in command)):
+        raise ValueError('this stock TOPS path does not call xcorr; retain geometric/ESD alignment')
+    if not shutil.which(command[0]):
+        raise ValueError('command not found: ' + command[0])
+    if Path(command[0]).name == 'xcorr' and command[0] != 'xcorr':
+        raise ValueError('use bare xcorr, not an absolute xcorr path')
+
+
+def run_workflow(command, backend, workers, executable):
+    if os.name == 'nt':
+        raise ValueError('--run requires a POSIX environment; Windows supports help/configuration tests only')
+    validate_workflow(command, backend)
+    env = os.environ.copy()
+    env.update(XCORR3_ACTIVE='1', XCORR3_ENTRY=str(Path(__file__).resolve()),
+               XCORR3_BACKEND=backend, XCORR3_WORKERS=workers, XCORR3_EXECUTABLE=executable)
+    shim = '''#!/usr/bin/env python3
+import os, runpy, sys
+api = runpy.run_path(os.environ['XCORR3_ENTRY'])
+try:
+    code = api['dispatch'](sys.argv[1:], os.environ['XCORR3_BACKEND'],
+        os.environ['XCORR3_WORKERS'], os.environ['XCORR3_EXECUTABLE'])
+except (OSError, ValueError) as error:
+    print('xcorr3: ' + str(error), file=sys.stderr)
+    code = 2
+if code:
+    # Latch failures even if an outer csh script later returns success.
+    # The parent preallocates this fixed-size file before starting the workflow.
+    try:
+        with open(os.environ['XCORR3_FAILURE_STATUS'], 'r+b', buffering=0) as status:
+            value = ('%03d' % min(max(code, 1), 255)).encode('ascii')
+            if status.write(value) != len(value):
+                raise OSError('short failure-status write')
+    except OSError as error:
+        print('xcorr3: cannot record backend failure: ' + str(error), file=sys.stderr)
+        code = 2
+sys.exit(code)
+'''
+    with tempfile.TemporaryDirectory(prefix='xcorr3-') as directory:
+        failure = Path(directory) / 'failure-status'
+        failure.write_bytes(b'000')
+        env['XCORR3_FAILURE_STATUS'] = str(failure)
+        path = Path(directory) / 'xcorr'
+        path.write_text(shim, encoding='utf-8'); path.chmod(0o755)
+        env['PATH'] = directory + os.pathsep + env.get('PATH', '')
+        result = subprocess.run(command, env=env)
+        status = result.returncode if result.returncode >= 0 else 128 - result.returncode
+        recorded = failure.read_bytes()
+        if len(recorded) != 3 or not recorded.isdigit():
+            raise ValueError('invalid workflow failure status')
+        child_status = int(recorded)
+        if child_status:
+            print(f'[xcorr3] intercepted xcorr failed (exit {child_status})', file=sys.stderr)
+        return status or child_status
+
+
+def main(argv=None):
+    parser = UsageParser(prog='xcorr3', allow_abbrev=False,
+        usage='xcorr3 [--backend original|mt|cc] master.PRM secondary.PRM [options]',
+        description='GMTSAR-style amplitude cross-correlation with selectable CPU/GPU backends.',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog='''Required inputs:
+  master.PRM secondary.PRM  Reference/search PRMs with accessible SLC paths.
+Common backend options (passed through):
+  -freq                   Frequency correlation (also the CC default)
+  -nx N -ny N              Range/azimuth sample counts
+  -xsearch N -ysearch N    Search radii
+  -range_interp N -interp N  Interpolation factors
+  -noshift -norange -nointerp
+MT only: -nproc N / --nproc N (positive process count or auto)
+CC only: -geocode -snr N -psnr N -no_blockmedian -nyquist_split
+Examples:
+  xcorr3 master.PRM secondary.PRM --backend mt -nproc 6 -nx 20 -ny 50
+  xcorr3 --backend cc master.PRM secondary.PRM -xsearch 128 -ysearch 128
+  xcorr3 --config config.txt master.PRM secondary.PRM
+  xcorr3 --config config.txt --run p2p_processing.csh ALOS a b config.txt
+Precedence: command line > config > original/auto. No automatic fallback.
+xcorr3 selects a backend; it does not replace TOPS geometric/ESD alignment.''')
+    parser.add_argument('--backend', choices=tuple(BACKENDS), help='backend (default: original)')
+    parser.add_argument('--config', type=Path, help='read xcorr_backend/xcorr_nproc from a GMTSAR config')
+    parser.add_argument('--nproc', help='MT worker processes; overrides config (or use -nproc in direct mode)')
+    parser.add_argument('--dry-run', action='store_true', help='print selection without executing')
+    parser.add_argument('--run', nargs=argparse.REMAINDER, metavar='COMMAND', help='wrap a POSIX foreground workflow; put launcher options before --run')
+    opts, remaining = parser.parse_known_args(argv)
+    if remaining and remaining[0] == '--':
+        remaining = remaining[1:]
+        if remaining and remaining[0] == 'xcorr':
+            remaining = remaining[1:]
+    try:
+        if opts.run is not None:
+            if not opts.run or remaining:
+                raise ValueError('--run requires a command and cannot be combined with direct inputs')
+        elif len(remaining) < 2:
+            raise ValueError('two input files are required: master.PRM secondary.PRM')
+        config = read_config(opts.config)
+        backend = opts.backend or config.get('xcorr_backend') or 'original'
+        workers = config.get('xcorr_nproc') or 'auto'
+        if opts.nproc is not None:
+            if backend != 'mt':
+                raise ValueError('nproc applies only to --backend mt')
+            workers = worker_count(opts.nproc)
+            if extract_workers(remaining)[1] is not None:
+                raise ValueError('provide nproc only once')
+        # Keep -nproc in direct arguments so its explicit value overrides config.
+        command = opts.run if opts.run is not None else backend_arguments(remaining, backend, workers)
+        if opts.run is not None:
+            validate_workflow(command, backend)
+        executable = resolve_backend(backend)
+        if opts.dry_run:
+            print(json.dumps({'backend': backend, 'executable': executable,
+                'mode': 'workflow' if opts.run is not None else 'direct', 'arguments': command,
+                'workers': (workers if opts.run is not None else extract_workers(command)[1] or 'auto') if backend == 'mt' else None,
+                'config': str(opts.config.resolve()) if opts.config else None}, indent=2))
+            return 0
+        if opts.run is not None:
+            return run_workflow(command, backend, workers, executable)
+        return dispatch(command, backend, 'auto', executable)
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
+
+
+if __name__ == '__main__':
+    sys.exit(main())

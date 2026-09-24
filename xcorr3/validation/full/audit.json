@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "launcher_sha256": "7d13aff3c7a0ee8746d6bbd23ffa1c39edbffd9eff94c9ba78dc644c70d55de8",
+  "backend_binary_sha256": {
+    "xcorr": "4158d29678bbf79e69083cf511eba1639a862fe164b6a3b101c418146538f33c",
+    "xcorr_mt": "ffb0bcff7e7ad28aff50c152968da407f760f54c1f560c2e19e9e78be26f392d",
+    "xcorr_cc": "0b624c00efdd27d24a3d71731101f60e439653a248240e102f7aefcfaf677500"
+  },
+  "compiled_source_matches": true,
+  "source_sha256": {
+    "backends/mt/xcorr_mt.c": "18baed5d4466418528f8d7b6319c988f4293ca4b62a7c1b6771eca26ed3c0ac0",
+    "backends/mt/Makefile": "03a9b8f61603cac2a6a089d10a5fcd278c2ac3c2ea7f46f746d7bc801ff28677",
+    "backends/cc/Makefile": "4ad6c1e4ffc082b0f5674ec9a0a57e8748d7f3436dcb928cbd4190e4d784f2cf",
+    "backends/cc/xcorr_cc.cu": "a9b6375b10340d4b4d02314462815ac37db5c0cf99032b8e22c0722d37a0bb26",
+    "backends/cc/xcorr_io.h": "08c43eefdd3ae5e9836e4b48df61ba89542c1404301e3121573a57866bbd64b7",
+    "backends/cc/xcorr_postprocess.cpp": "a6a753f4fbcc4c8781eada0d01211fc954d1b109ac396b853b375701b0f54f5e",
+    "backends/cc/xcorr_postprocess.h": "f8b9d46eb9d5b174cb76f7cf71b850bd56999a647987b3bcdc53404eb3c658f1",
+    "backends/cc/xcorr2_args.c": "a826912cc3771727a879b32c4fe69aef0dd2ef2296a2cc2987ee30b596bf4876",
+    "backends/cc/xcorr2_args.h": "5c6cbb6fd6ad3c2e8c83fdd93bb4e569e32021a2ea358bc486f4442726c5a386",
+    "backends/cc/xcorr2.h": "4921960ff5c23f844b154f077ef83bc4caad1a8b42b885fc91ced91d7f4e3582",
+    "backends/cc/prm_helper.c": "772b3f7ae501f7ade6741737f6f809bbf03421a0bf00452c1afd95c183df1a49"
+  },
+  "test_source_sha256": {
+    "test_xcorr3.py": "ccd558889f0192475372a723672c6627aa0a40f24da8dc320ef2222d2d9b88cd",
+    "test_integration.py": "11c6735a89564a31252ae9ed13e99ca4c9ec636d42445d83af47adcd8252091b",
+    "test_geocode.py": "8c9c8a1707563ea1ea3d2bb81d35f7225206b8b3aab724945e7824ea11650695"
+  },
+  "counts": {
+    "integration": 73,
+    "synthetic_geocode": 7,
+    "cc_parser": 307,
+    "cc_host_output": 23,
+    "cc_entry_input": 12,
+    "cc_entry_output": 6,
+    "dingri_cc_configurations": 9,
+    "dingri_cc_points": 18000,
+    "dingri_fresh_original_mt_configurations": 9,
+    "dingri_fresh_points_per_cpu_backend": 36
+  },
+  "cpu_cuda": {
+    "exact_offset_points": 17975,
+    "outside_step_with_rounding": 14,
+    "maximum_difference": 4.125,
+    "new_cuda_differences": false
+  },
+  "limitations": [
+    "Real CPU entry checks use 2x2 samples for each of nine configurations; full-grid MT/CPU evidence is historical.",
+    "Geocoding uses a synthetic lookup; full earthquake geocoding/TOPS/ESD accuracy is not established."
+  ]
+}

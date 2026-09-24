@@ -1,0 +1,149 @@
+{
+  "pass_": true,
+  "cases": [
+    {
+      "name": "plain",
+      "pass_": true,
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "name": "geo_success",
+      "pass_": true,
+      "returncode": 0,
+      "stderr": "xcorr_cc: geocoding stages completed: 36/36 points retained; awaiting output publication\n"
+    },
+    {
+      "name": "raw_success",
+      "pass_": true,
+      "returncode": 0,
+      "stderr": "xcorr_cc: geocoding stages completed: 36/36 points retained; awaiting output publication\n"
+    },
+    {
+      "name": "missing_trans",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: -geocode requires readable trans.dat: No such file or directory\n"
+    },
+    {
+      "name": "bad_prm",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:1: field 'PRF' must be a finite, representable number\n"
+    },
+    {
+      "name": "empty_filter",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: -geocode: no points passed correlation/peak-SNR/search-window filters\n"
+    },
+    {
+      "name": "failure_blockmedian",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stage failed: gmt blockmedian (exit 7)\n"
+    },
+    {
+      "name": "failure_xyz2grd",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stage failed: gmt xyz2grd (exit 7)\n"
+    },
+    {
+      "name": "failure_grdfilter",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stage failed: gmt grdfilter (exit 7)\n"
+    },
+    {
+      "name": "failure_grdinfo",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stage failed: gmt grdinfo (exit 7)\n"
+    },
+    {
+      "name": "failure_projection",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stage failed: proj_ra2ll.csh trans.dat (exit 7)\n"
+    },
+    {
+      "name": "zero_exit_missing_grid",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: missing output /home/tjz/xcorr-cc-output-fix-validation/host-final/zero_exit_missing_grid/.xcorr_cc-KthPxb/azi_offset_ll.grd: No such file or directory\n"
+    },
+    {
+      "name": "all_nan_grid",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: invalid or all-NaN geocoding grid: azi_offset.grd\n"
+    },
+    {
+      "name": "write_limit",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: flush /home/tjz/xcorr-cc-output-fix-validation/host-final/write_limit/.xcorr_cc-6qEy8r/freq_xcorr.dat: File too large\n"
+    },
+    {
+      "name": "immediate_write_failure",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: write test correlation: File too large\n"
+    },
+    {
+      "name": "close_failure",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: close /home/tjz/xcorr-cc-output-fix-validation/host-final/close_failure/.xcorr_cc-HDfFq3/freq_xcorr.dat: Input/output error\n"
+    },
+    {
+      "name": "sync_failure",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: sync /home/tjz/xcorr-cc-output-fix-validation/host-final/sync_failure/.xcorr_cc-cIO4Cj/freq_xcorr.dat: Input/output error\n"
+    },
+    {
+      "name": "publish_failure",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stages completed: 36/36 points retained; awaiting output publication\nxcorr_cc: publish /home/tjz/xcorr-cc-output-fix-validation/host-final/publish_failure/rng_offset_ll.grd: Input/output error\n"
+    },
+    {
+      "name": "publish_without_old",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stages completed: 36/36 points retained; awaiting output publication\nxcorr_cc: publish /home/tjz/xcorr-cc-output-fix-validation/host-final/publish_without_old/rng_offset_ll.grd: Input/output error\n"
+    },
+    {
+      "name": "missing_tool",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: geocoding stage failed: gmt blockmedian (exit 127)\n"
+    },
+    {
+      "name": "directory_output",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: output target is not a regular file: /home/tjz/xcorr-cc-output-fix-validation/host-final/directory_output/freq_xcorr.dat\n"
+    },
+    {
+      "name": "device_symlink",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr_cc: output target is not a regular file: /home/tjz/xcorr-cc-output-fix-validation/host-final/device_symlink/freq_xcorr.dat\n"
+    },
+    {
+      "name": "real_gmt_gmtsar",
+      "pass_": true,
+      "returncode": 0,
+      "stderr": "surface [INFORMATION]: Provides 5, expects 3-column binary data\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Cannot suggest any n_columns,n_rows better than your current -R -I settings.\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Grid domain: W: 96 E: 608 S: 96 N: 608 n_columns: 32 n_rows: 16 [gridline registration]\nsurface [INFORMATION]: Processing input table data\nsurface [INFORMATION]: Input 5 columns via binary records using format ddddd\nsurface [INFORMATION]: Reading Data Table from file trans.dat\nsurface [INFORMATION]: Minimum value of your dataset x,y,z at: 96 80 87.0019226074\nsurface [INFORMATION]: Maximum value of your dataset x,y,z at: 608 80 87.0121612549\nsurface [INFORMATION]: Eliminate data points that are not nearest a node.\nsurface [WARNING]: 561 unusable points were supplied; these will be ignored.\nsurface [WARNING]: You should have pre-processed the data with block-mean, -median, or -mode.\nsurface [WARNING]: Check that previous processing steps write results with enough decimals.\nsurface [WARNING]: Possibly some data were half-way between nodes and subject to IEEE 754 rounding.\nsurface [INFORMATION]: Plane fit z = 87.0019 + (0.000319999 * col) + (2.03349e-14 * row)\nsurface [INFORMATION]: Normalize detrended data constraints by z rms = 1.32811e-06\nsurface [INFORMATION]: Select default convergence limit of 1.32811e-10 (100 ppm of L2 scale)\nsurface [INFORMATION]: Recompute data index for next iteration [stride = 4]\nsurface [INFORMATION]: ------------------------------------------\nsurface [INFORMATION]: Memory for data array          :   13.1 kb\nsurface [INFORMATION]: Memory for final grid          :    3.1 kb\nsurface [INFORMATION]: Memory for Briggs coefficients :   13.1 kb\nsurface [INFORMATION]: Memory for node status         : 778 bytes\nsurface [INFORMATION]: ------------------------------------------\nsurface [INFORMATION]: Total memory use               :   30.1 kb\nsurface [INFORMATION]: ==========================================\nsurface [INFORMATION]: Grid\tMode\tIteration\tMax Change\tConv Limit\tTotal Iterations\nsurface [INFORMATION]: Set finite-difference coefficients [stride = 4]\nsurface [INFORMATION]: Determine nearest point and set Briggs coefficients [stride = 4]\nsurface [INFORMATION]:    4\tD\t       1\t-1.32810711636e-06\t3.3202677909e-11\t         1\nsurface [INFORMATION]: Recompute data index for next iteration [stride = 2]\nsurface [INFORMATION]: Expand grid by factor of 2 when going from stride = 4 to 2\nsurface [INFORMATION]: Fill in expanded grid by bilinear interpolation [stride = 2]\nsurface [INFORMATION]:    2\tI\t      17\t4.81426357964e-11\t6.64053558181e-11\t        18\nsurface [INFORMATION]: Determine nearest point and set Briggs coefficients [stride = 2]\nsurface [INFORMATION]:    2\tD\t       1\t-1.32810711636e-06\t6.64053558181e-11\t        19\nsurface [INFORMATION]: Recompute data index for next iteration [stride = 1]\nsurface [INFORMATION]: Expand grid by factor of 2 when going from stride = 2 to 1\nsurface [INFORMATION]: Fill in expanded grid by bilinear interpolation [stride = 1]\nsurface [INFORMATION]:    1\tI\t      17\t8.95604082731e-11\t1.32810711636e-10\t        36\nsurface [INFORMATION]: Determine nearest point and set Briggs coefficients [stride = 1]\nsurface [INFORMATION]:    1\tD\t       1\t-1.32810711636e-06\t1.32810711636e-10\t        37\nsurface [INFORMATION]: Compute rms misfit and curvature.\nsurface [INFORMATION]: Fit info: N data points  N nodes\tmean error\trms error\tcurvature\nsurface [INFORMATION]: \t     561\t     561\t0\t0\t7853.99994353\nsurface [INFORMATION]: Writing grid to file raln.grd\nsurface [INFORMATION]: Provides 5, expects 3-column binary data\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Cannot suggest any n_columns,n_rows better than your current -R -I settings.\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Cartesian input grid\nsurface [INFORMATION]: Grid domain: W: 96 E: 608 S: 96 N: 608 n_columns: 32 n_rows: 16 [gridline registration]\nsurface [INFORMATION]: Processing input table data\nsurface [INFORMATION]: Input 5 columns via binary records using format ddddd\nsurface [INFORMATION]: Reading Data Table from file trans.dat\nsurface [INFORMATION]: Minimum value of your dataset x,y,z at: 96 80 28.0016002655\nsurface [INFORMATION]: Maximum value of your dataset x,y,z at: 96 608 28.0121593475\nsurface [INFORMATION]: Eliminate data points that are not nearest a node.\nsurface [WARNING]: 561 unusable points were supplied; these will be ignored.\nsurface [WARNING]: You should have pre-processed the data with block-mean, -median, or -mode.\nsurface [WARNING]: Check that previous processing steps write results with enough decimals.\nsurface [WARNING]: Possibly some data were half-way between nodes and subject to IEEE 754 rounding.\nsurface [INFORMATION]: Plane fit z = 28.0019 + (0 * col) + (0.00063999 * row)\nsurface [INFORMATION]: Normalize detrended data constraints by z rms = 0\nsurface [WARNING]: Input data lie exactly on a plane.\nsurface [INFORMATION]: Writing grid to file ralt.grd\nls: No match.\nblockmedian [INFORMATION]: Provides 3, expects 3-column binary data\nblockmedian [INFORMATION]: Processing input table data\nblockmedian [INFORMATION]: W: -273 E: -272.983333333 S: 28 N: 28.0166666667 n_columns: 30 n_rows: 30\nblockmedian [INFORMATION]: Input 3 columns via binary records using format fff\nblockmedian [INFORMATION]: Output 3 columns via binary records using format fff\nblockmedian [INFORMATION]: Reading Data Table from file llp\nblockmedian [INFORMATION]: Writing Data Table to Standard Output stream\nblockmedian [INFORMATION]: Calculating block medians\nblockmedian [INFORMATION]: N read: 36 N used: 36 outside_area: 0 N cells filled: 36\nls: No match.\nblockmedian [INFORMATION]: Provides 3, expects 3-column binary data\nblockmedian [INFORMATION]: Processing input table data\nblockmedian [INFORMATION]: W: -273 E: -272.983333333 S: 28 N: 28.0166666667 n_columns: 30 n_rows: 30\nblockmedian [INFORMATION]: Input 3 columns via binary records using format fff\nblockmedian [INFORMATION]: Output 3 columns via binary records using format fff\nblockmedian [INFORMATION]: Reading Data Table from file llp\nblockmedian [INFORMATION]: Writing Data Table to Standard Output stream\nblockmedian [INFORMATION]: Calculating block medians\nblockmedian [INFORMATION]: N read: 36 N used: 36 outside_area: 0 N cells filled: 36\nxcorr_cc: geocoding stages completed: 36/36 points retained; awaiting output publication\n"
+    }
+  ],
+  "source_sha256": {
+    "xcorr_io.h": "08c43eefdd3ae5e9836e4b48df61ba89542c1404301e3121573a57866bbd64b7",
+    "xcorr_postprocess.cpp": "a6a753f4fbcc4c8781eada0d01211fc954d1b109ac396b853b375701b0f54f5e",
+    "xcorr_postprocess.h": "f8b9d46eb9d5b174cb76f7cf71b850bd56999a647987b3bcdc53404eb3c658f1",
+    "prm_helper.c": "772b3f7ae501f7ade6741737f6f809bbf03421a0bf00452c1afd95c183df1a49"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "status": "Complete real-data matrix",
+  "spatial_figures": [
+    "offsets_IW2_standard",
+    "offsets_IW2_wide",
+    "offsets_IW2_dense",
+    "offsets_IW1_standard",
+    "offsets_IW1_wide",
+    "offsets_IW1_dense",
+    "offsets_IW3_standard",
+    "offsets_IW3_wide",
+    "offsets_IW3_dense"
+  ],
+  "comparisons_available": 17,
+  "all_data_points_retained": true,
+  "spatial_repetition_rule": "first pair for each configuration",
+  "timing_repetitions": "all complete pairs",
+  "display_revision": {
+    "main_figure": "offsets_IW2_dense",
+    "field_scale": "pooled P1-P99, minimum span 0.25 pixel",
+    "difference_scale_pixels": [
+      -0.0625,
+      0.0625
+    ],
+    "data_changed": false,
+    "detrending": false,
+    "other_figures": "historical full-range scales"
+  }
+}

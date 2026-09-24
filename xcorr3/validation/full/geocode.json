@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "direct",
+      "returncode": 0,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr_cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-geocode",
+        "-snr",
+        "0",
+        "-psnr",
+        "0"
+      ],
+      "pass": true,
+      "equal_to_direct_cc": true
+    },
+    {
+      "name": "cli",
+      "returncode": 0,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr3",
+        "--backend",
+        "cc",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-geocode",
+        "-snr",
+        "0",
+        "-psnr",
+        "0"
+      ],
+      "pass": true,
+      "equal_to_direct_cc": true
+    },
+    {
+      "name": "config",
+      "returncode": 0,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr3",
+        "--config",
+        "/home/tjz/xcorr3-full-8kgn7uft/geocode-release/config/config.txt",
+        "master.PRM",
+        "aligned.PRM",
+        "-nx",
+        "7",
+        "-ny",
+        "5",
+        "-xsearch",
+        "32",
+        "-ysearch",
+        "32",
+        "-geocode",
+        "-snr",
+        "0",
+        "-psnr",
+        "0"
+      ],
+      "pass": true,
+      "equal_to_direct_cc": true
+    },
+    {
+      "name": "workflow",
+      "returncode": 0,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr3",
+        "--config",
+        "/home/tjz/xcorr3-full-8kgn7uft/geocode-release/workflow/config.txt",
+        "--run",
+        "csh",
+        "-f",
+        "-c",
+        "xcorr master.PRM aligned.PRM -nx 7 -ny 5 -xsearch 32 -ysearch 32 -geocode -snr 0 -psnr 0; /bin/true"
+      ],
+      "pass": true,
+      "equal_to_direct_cc": true
+    },
+    {
+      "name": "empty_filter",
+      "returncode": 1,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr3",
+        "--config",
+        "/home/tjz/xcorr3-full-8kgn7uft/geocode-release/empty_filter/config.txt",
+        "--run",
+        "csh",
+        "-f",
+        "-c",
+        "xcorr master.PRM aligned.PRM -nx 7 -ny 5 -xsearch 32 -ysearch 32 -geocode -snr 100 -psnr 0; /bin/true"
+      ],
+      "pass": true
+    },
+    {
+      "name": "failed_projection",
+      "returncode": 1,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr3",
+        "--config",
+        "/home/tjz/xcorr3-full-8kgn7uft/geocode-release/failed_projection/config.txt",
+        "--run",
+        "csh",
+        "-f",
+        "-c",
+        "xcorr master.PRM aligned.PRM -nx 7 -ny 5 -xsearch 32 -ysearch 32 -geocode -snr 0 -psnr 0; /bin/true"
+      ],
+      "pass": true
+    },
+    {
+      "name": "missing_product",
+      "returncode": 1,
+      "command": [
+        "/home/tjz/xcorr3-full-8kgn7uft/release/bin/xcorr3",
+        "--config",
+        "/home/tjz/xcorr3-full-8kgn7uft/geocode-release/missing_product/config.txt",
+        "--run",
+        "csh",
+        "-f",
+        "-c",
+        "xcorr master.PRM aligned.PRM -nx 7 -ny 5 -xsearch 32 -ysearch 32 -geocode -snr 0 -psnr 0; /bin/true"
+      ],
+      "pass": true
+    }
+  ]
+}

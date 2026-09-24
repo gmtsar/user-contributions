@@ -1,0 +1,68 @@
+[
+  {
+    "component": "Range",
+    "method": "CPU",
+    "low": -19.625,
+    "high": -17.906,
+    "below": 34,
+    "above": 25,
+    "minimum": -81.312,
+    "maximum": 48.0,
+    "rows": 4000
+  },
+  {
+    "component": "Range",
+    "method": "CUDA",
+    "low": -19.625,
+    "high": -17.906,
+    "below": 34,
+    "above": 25,
+    "minimum": -80.844,
+    "maximum": 45.844,
+    "rows": 4000
+  },
+  {
+    "component": "Range",
+    "method": "CUDA minus CPU",
+    "low": -0.0625,
+    "high": 0.0625,
+    "below": 4,
+    "above": 2,
+    "minimum": -2.281000000000006,
+    "maximum": 0.4680000000000035,
+    "rows": 4000
+  },
+  {
+    "component": "Azimuth",
+    "method": "CPU",
+    "low": -1.25,
+    "high": -1.0,
+    "below": 3,
+    "above": 7,
+    "minimum": -125.625,
+    "maximum": 130.375,
+    "rows": 4000
+  },
+  {
+    "component": "Azimuth",
+    "method": "CUDA",
+    "low": -1.25,
+    "high": -1.0,
+    "below": 3,
+    "above": 7,
+    "minimum": -124.562,
+    "maximum": 128.625,
+    "rows": 4000
+  },
+  {
+    "component": "Azimuth",
+    "method": "CUDA minus CPU",
+    "low": -0.0625,
+    "high": 0.0625,
+    "below": 5,
+    "above": 1,
+    "minimum": -1.8129999999999882,
+    "maximum": 1.0630000000000024,
+    "rows": 4000
+  }
+]

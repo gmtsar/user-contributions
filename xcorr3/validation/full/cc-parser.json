@@ -1,0 +1,4162 @@
+{
+  "pass": true,
+  "total": 307,
+  "passed": 307,
+  "failed": 0,
+  "sanitize": "address,undefined",
+  "source_sha256": {
+    "xcorr2_args.c": "a826912cc3771727a879b32c4fe69aef0dd2ef2296a2cc2987ee30b596bf4876",
+    "xcorr2_args.h": "5c6cbb6fd6ad3c2e8c83fdd93bb4e569e32021a2ea358bc486f4442726c5a386",
+    "prm_helper.c": "772b3f7ae501f7ade6741737f6f809bbf03421a0bf00452c1afd95c183df1a49",
+    "xcorr2.h": "4921960ff5c23f844b154f077ef83bc4caad1a8b42b885fc91ced91d7f4e3582"
+  },
+  "compile_command": [
+    "gcc",
+    "-std=gnu11",
+    "-O1",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-no-pie",
+    "/home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-parser/source/parser_harness.c",
+    "/home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-parser/source/xcorr2_args.c",
+    "/home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-parser/source/prm_helper.c",
+    "-o",
+    "/home/tjz/xcorr3-full-8kgn7uft/release-suites/cc-parser/parser_harness",
+    "-I/usr/include/glib-2.0",
+    "-I/usr/lib/x86_64-linux-gnu/glib-2.0/include",
+    "-lglib-2.0",
+    "-lm"
+  ],
+  "cases": [
+    {
+      "name": "defaults",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "explicit_zero_filters",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":0,\"psnr_thr\":0,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":0,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "0",
+        "-psnr",
+        "0",
+        "-throttle",
+        "0"
+      ]
+    },
+    {
+      "name": "signed_zero_filters",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":0,\"psnr_thr\":0,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":0,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "-0",
+        "-psnr",
+        "+0",
+        "-throttle",
+        "-0"
+      ]
+    },
+    {
+      "name": "positive_sign",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":20,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "+20"
+      ]
+    },
+    {
+      "name": "arbitrary_interp_factor",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":3,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "3"
+      ]
+    },
+    {
+      "name": "nointerp_ignores_derived_size",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "2147483647",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "explicit_controls",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":128,\"ysearch\":256,\"nxl\":20,\"nyl\":50,\"astretcha\":0.001,\"ri\":4,\"interp_factor\":8,\"nyquist_split\":0,\"snr_thr\":18,\"psnr_thr\":6,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":5,\"throttle_every\":10,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "20",
+        "-ny",
+        "50",
+        "-xsearch",
+        "128",
+        "-ysearch",
+        "256",
+        "-range_interp",
+        "4",
+        "-interp",
+        "8",
+        "-snr",
+        "18",
+        "-psnr",
+        "6",
+        "-throttle",
+        "5",
+        "-throttle_every",
+        "10"
+      ]
+    },
+    {
+      "name": "override_flags",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":1,\"interp_factor\":1,\"nyquist_split\":1,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":1,\"do_blockmedian\":0,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "4",
+        "-interp",
+        "8",
+        "-norange",
+        "-nointerp",
+        "-nyquist_split",
+        "-geocode",
+        "-no_blockmedian"
+      ]
+    },
+    {
+      "name": "no_geocode_wins",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-geocode",
+        "-no_geocode"
+      ]
+    },
+    {
+      "name": "noshift_omitted_keys",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":0,\"y_offset\":0,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"master.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-noshift"
+      ]
+    },
+    {
+      "name": "no_trailing_newline",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "crlf",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "blank_comments",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "duplicate_last_assignment",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":8192,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_unrelated",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "help",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "xcorr_cc - CUDA 加速的二维振幅互相关 / 像素偏移追踪 (POT)\n\n用法: xcorr_cc 主影像.PRM 辅影像.PRM [选项...]\n  主影像.PRM / 辅影像.PRM   已配准的 GMTSAR SLC 参数文件 (主=参考, 辅=搜索)\n\n采样与搜索:\n  -nx  n                距离向(x)采样点数\n  -ny  n                方位向(y)采样点数        (总计算量 = nx*ny)\n  -xsearch xs           距离向搜索半径, 2的幂[32/64/128/256], 默认 64\n  -ysearch ys           方位向搜索半径, 2的幂, 默认 64\n  -noshift              忽略 PRM 的 rshift/ashift(置0); 已配准影像测残余形变时用\n插值:\n  -range_interp ri      距离向 FFT 插值倍数(2的幂), 默认 2;  -norange 关闭\n  -interp factor        相关面亚像素插值倍数, 默认 16;      -nointerp 关闭\n  -nyquist_split        亚像素插值对称拆分 Nyquist(默认关 = 与原版 GMTSAR 逐点一致)\n抗异常值 + 集成后处理 (默认关闭, 需显式开启):\n  -geocode              开启集成后处理: 过滤/网格化/地理编码 (需当前目录有 trans.dat)\n  -snr  n               地理编码的相关阈值, 默认 10   (0 = 不按相关过滤)\n  -psnr n               峰显著性阈值, 剔除杂峰/极大异常值, 默认 5  (0 = 不过滤)\n  -no_blockmedian       网格化用原始 xyz2grd(保留逐点值), 而非默认 blockmedian + 3x3 中值去毛刺\n  -no_geocode           兼容旧脚本保留; 现在默认即不做地理编码\nGPU 负载冗余 (单卡既算又显时防止桌面卡死 + 留散热/供电余量):\n  -throttle ms          每算一批点让 GPU 歇 ms 毫秒, 默认 2 (0 = 跑满速, 显示器接核显时用)\n  -throttle_every n     每 n 个采样点休息一次, 默认 64 (n 越小越跟手但越慢)\n\n输出:\n  freq_xcorr.dat   6 列: x_像素  距离偏移  y_像素  方位偏移  相关(0-100)  peak_snr(峰显著性)\n  azi_offset_ll.grd / rng_offset_ll.grd   (仅 -geocode 且当前目录有 trans.dat 时生成; 地理坐标, 单位 m)\n\n示例:\n  xcorr_cc master.PRM aligned.PRM -nx 100 -ny 200 -xsearch 64 -ysearch 64 -noshift -psnr 6\n",
+      "argv": [
+        "-help"
+      ]
+    },
+    {
+      "name": "help_double_dash",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "xcorr_cc - CUDA 加速的二维振幅互相关 / 像素偏移追踪 (POT)\n\n用法: xcorr_cc 主影像.PRM 辅影像.PRM [选项...]\n  主影像.PRM / 辅影像.PRM   已配准的 GMTSAR SLC 参数文件 (主=参考, 辅=搜索)\n\n采样与搜索:\n  -nx  n                距离向(x)采样点数\n  -ny  n                方位向(y)采样点数        (总计算量 = nx*ny)\n  -xsearch xs           距离向搜索半径, 2的幂[32/64/128/256], 默认 64\n  -ysearch ys           方位向搜索半径, 2的幂, 默认 64\n  -noshift              忽略 PRM 的 rshift/ashift(置0); 已配准影像测残余形变时用\n插值:\n  -range_interp ri      距离向 FFT 插值倍数(2的幂), 默认 2;  -norange 关闭\n  -interp factor        相关面亚像素插值倍数, 默认 16;      -nointerp 关闭\n  -nyquist_split        亚像素插值对称拆分 Nyquist(默认关 = 与原版 GMTSAR 逐点一致)\n抗异常值 + 集成后处理 (默认关闭, 需显式开启):\n  -geocode              开启集成后处理: 过滤/网格化/地理编码 (需当前目录有 trans.dat)\n  -snr  n               地理编码的相关阈值, 默认 10   (0 = 不按相关过滤)\n  -psnr n               峰显著性阈值, 剔除杂峰/极大异常值, 默认 5  (0 = 不过滤)\n  -no_blockmedian       网格化用原始 xyz2grd(保留逐点值), 而非默认 blockmedian + 3x3 中值去毛刺\n  -no_geocode           兼容旧脚本保留; 现在默认即不做地理编码\nGPU 负载冗余 (单卡既算又显时防止桌面卡死 + 留散热/供电余量):\n  -throttle ms          每算一批点让 GPU 歇 ms 毫秒, 默认 2 (0 = 跑满速, 显示器接核显时用)\n  -throttle_every n     每 n 个采样点休息一次, 默认 64 (n 越小越跟手但越慢)\n\n输出:\n  freq_xcorr.dat   6 列: x_像素  距离偏移  y_像素  方位偏移  相关(0-100)  peak_snr(峰显著性)\n  azi_offset_ll.grd / rng_offset_ll.grd   (仅 -geocode 且当前目录有 trans.dat 时生成; 地理坐标, 单位 m)\n\n示例:\n  xcorr_cc master.PRM aligned.PRM -nx 100 -ny 200 -xsearch 64 -ysearch 64 -noshift -psnr 6\n",
+      "argv": [
+        "--help"
+      ]
+    },
+    {
+      "name": "no_args_help",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "xcorr_cc - CUDA 加速的二维振幅互相关 / 像素偏移追踪 (POT)\n\n用法: xcorr_cc 主影像.PRM 辅影像.PRM [选项...]\n  主影像.PRM / 辅影像.PRM   已配准的 GMTSAR SLC 参数文件 (主=参考, 辅=搜索)\n\n采样与搜索:\n  -nx  n                距离向(x)采样点数\n  -ny  n                方位向(y)采样点数        (总计算量 = nx*ny)\n  -xsearch xs           距离向搜索半径, 2的幂[32/64/128/256], 默认 64\n  -ysearch ys           方位向搜索半径, 2的幂, 默认 64\n  -noshift              忽略 PRM 的 rshift/ashift(置0); 已配准影像测残余形变时用\n插值:\n  -range_interp ri      距离向 FFT 插值倍数(2的幂), 默认 2;  -norange 关闭\n  -interp factor        相关面亚像素插值倍数, 默认 16;      -nointerp 关闭\n  -nyquist_split        亚像素插值对称拆分 Nyquist(默认关 = 与原版 GMTSAR 逐点一致)\n抗异常值 + 集成后处理 (默认关闭, 需显式开启):\n  -geocode              开启集成后处理: 过滤/网格化/地理编码 (需当前目录有 trans.dat)\n  -snr  n               地理编码的相关阈值, 默认 10   (0 = 不按相关过滤)\n  -psnr n               峰显著性阈值, 剔除杂峰/极大异常值, 默认 5  (0 = 不过滤)\n  -no_blockmedian       网格化用原始 xyz2grd(保留逐点值), 而非默认 blockmedian + 3x3 中值去毛刺\n  -no_geocode           兼容旧脚本保留; 现在默认即不做地理编码\nGPU 负载冗余 (单卡既算又显时防止桌面卡死 + 留散热/供电余量):\n  -throttle ms          每算一批点让 GPU 歇 ms 毫秒, 默认 2 (0 = 跑满速, 显示器接核显时用)\n  -throttle_every n     每 n 个采样点休息一次, 默认 64 (n 越小越跟手但越慢)\n\n输出:\n  freq_xcorr.dat   6 列: x_像素  距离偏移  y_像素  方位偏移  相关(0-100)  peak_snr(峰显著性)\n  azi_offset_ll.grd / rng_offset_ll.grd   (仅 -geocode 且当前目录有 trans.dat 时生成; 地理坐标, 单位 m)\n\n示例:\n  xcorr_cc master.PRM aligned.PRM -nx 100 -ny 200 -xsearch 64 -ysearch 64 -noshift -psnr 6\n",
+      "argv": []
+    },
+    {
+      "name": "double_dash_paths",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "--",
+        "-master.PRM",
+        "-secondary.PRM"
+      ]
+    },
+    {
+      "name": "extra_positional",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: expected exactly two PRM inputs; unexpected 'extra.PRM'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "extra.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "错误: 未指定辅影像 PRM 文件。\n\nxcorr_cc - CUDA 加速的二维振幅互相关 / 像素偏移追踪 (POT)\n\n用法: xcorr_cc 主影像.PRM 辅影像.PRM [选项...]\n  主影像.PRM / 辅影像.PRM   已配准的 GMTSAR SLC 参数文件 (主=参考, 辅=搜索)\n\n采样与搜索:\n  -nx  n                距离向(x)采样点数\n  -ny  n                方位向(y)采样点数        (总计算量 = nx*ny)\n  -xsearch xs           距离向搜索半径, 2的幂[32/64/128/256], 默认 64\n  -ysearch ys           方位向搜索半径, 2的幂, 默认 64\n  -noshift              忽略 PRM 的 rshift/ashift(置0); 已配准影像测残余形变时用\n插值:\n  -range_interp ri      距离向 FFT 插值倍数(2的幂), 默认 2;  -norange 关闭\n  -interp factor        相关面亚像素插值倍数, 默认 16;      -nointerp 关闭\n  -nyquist_split        亚像素插值对称拆分 Nyquist(默认关 = 与原版 GMTSAR 逐点一致)\n抗异常值 + 集成后处理 (默认关闭, 需显式开启):\n  -geocode              开启集成后处理: 过滤/网格化/地理编码 (需当前目录有 trans.dat)\n  -snr  n               地理编码的相关阈值, 默认 10   (0 = 不按相关过滤)\n  -psnr n               峰显著性阈值, 剔除杂峰/极大异常值, 默认 5  (0 = 不过滤)\n  -no_blockmedian       网格化用原始 xyz2grd(保留逐点值), 而非默认 blockmedian + 3x3 中值去毛刺\n  -no_geocode           兼容旧脚本保留; 现在默认即不做地理编码\nGPU 负载冗余 (单卡既算又显时防止桌面卡死 + 留散热/供电余量):\n  -throttle ms          每算一批点让 GPU 歇 ms 毫秒, 默认 2 (0 = 跑满速, 显示器接核显时用)\n  -throttle_every n     每 n 个采样点休息一次, 默认 64 (n 越小越跟手但越慢)\n\n输出:\n  freq_xcorr.dat   6 列: x_像素  距离偏移  y_像素  方位偏移  相关(0-100)  peak_snr(峰显著性)\n  azi_offset_ll.grd / rng_offset_ll.grd   (仅 -geocode 且当前目录有 trans.dat 时生成; 地理坐标, 单位 m)\n\n示例:\n  xcorr_cc master.PRM aligned.PRM -nx 100 -ny 200 -xsearch 64 -ysearch 64 -noshift -psnr 6\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM"
+      ]
+    },
+    {
+      "name": "unknown_option",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-bogus'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-bogus"
+      ]
+    },
+    {
+      "name": "unknown_option_value",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-bogus=2'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-bogus=2"
+      ]
+    },
+    {
+      "name": "flag_with_argument",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-noshift=1'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-noshift=1"
+      ]
+    },
+    {
+      "name": "invalid_device",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -af must be cuda, opencl or cpu\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-af",
+        "metal"
+      ]
+    },
+    {
+      "name": "missing_device_value",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-af'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-af"
+      ]
+    },
+    {
+      "name": "missing_file",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM absent.PRM: cannot open: No such file or directory\n",
+      "stdout": "",
+      "argv": [
+        "absent.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "master_read_error",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM .: read failed: Is a directory\n",
+      "stdout": "",
+      "argv": [
+        ".",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "secondary_read_error_cleanup",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM .: read failed: Is a directory\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "."
+      ]
+    },
+    {
+      "name": "empty_key",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:1: empty key\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "whitespace_key",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:1: empty key\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "malformed_line",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:6: expected key = value assignment\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "embedded_nul",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:6: embedded NUL byte\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_file",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM: missing required field 'SLC_file'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "dimension_product_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: master PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "sampling_product_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: nx is outside the sampling index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "2147483647",
+        "-ny",
+        "2"
+      ]
+    },
+    {
+      "name": "ny_sampling_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: ny is outside the sampling index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "2147483647"
+      ]
+    },
+    {
+      "name": "interpolation_size_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: interp is outside the interpolation index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "2147483647"
+      ]
+    },
+    {
+      "name": "range_interpolation_size_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: range_interp element count exceeds INT_MAX\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "1073741824"
+      ]
+    },
+    {
+      "name": "xsearch_size_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch must be a power of two within the index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "1073741824"
+      ]
+    },
+    {
+      "name": "ysearch_size_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: ysearch must be a power of two within the index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "1073741824"
+      ]
+    },
+    {
+      "name": "prf_ratio_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRF ratio produces an invalid azimuth stretch\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "prf_ratio_cancellation",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRF ratio produces an invalid azimuth stretch\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "large_streamable_image",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":20000000,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "master_row_cache_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: num_rng_bins/ysearch row-cache index exceeds INT_MAX\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "secondary_row_cache_overflow",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: num_rng_bins/ysearch row-cache index exceeds INT_MAX\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "long_path_spaces_equals",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"directory with spaces/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx = scene.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "long_unknown_value",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "device_cuda",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":1,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-af",
+        "cuda"
+      ]
+    },
+    {
+      "name": "device_opencl",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":2,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-af",
+        "opencl"
+      ]
+    },
+    {
+      "name": "device_cpu",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":3,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-af",
+        "cpu"
+      ]
+    },
+    {
+      "name": "missing_value_nx",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-nx'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx"
+      ]
+    },
+    {
+      "name": "numeric_nx_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_nx_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_nx_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_nx_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_nx_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_nx_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_nx_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_nx_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_nx_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_nx_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_nx_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_nx_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_nx",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "0"
+      ]
+    },
+    {
+      "name": "missing_value_ny",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-ny'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny"
+      ]
+    },
+    {
+      "name": "numeric_ny_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_ny_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_ny_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_ny_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_ny_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_ny_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_ny_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_ny_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_ny_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_ny_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_ny_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_ny_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_ny",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ny requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ny",
+        "0"
+      ]
+    },
+    {
+      "name": "missing_value_xsearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-xsearch'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_xsearch_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_xsearch_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_xsearch_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_xsearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "0"
+      ]
+    },
+    {
+      "name": "missing_value_ysearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-ysearch'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_ysearch_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_ysearch_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_ysearch_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_ysearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "0"
+      ]
+    },
+    {
+      "name": "missing_value_range_interp",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-range_interp'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_range_interp_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_range_interp_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_range_interp_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_range_interp",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "0"
+      ]
+    },
+    {
+      "name": "missing_value_interp",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-interp'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp"
+      ]
+    },
+    {
+      "name": "numeric_interp_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_interp_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_interp_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_interp_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_interp_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_interp_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_interp_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_interp_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_interp_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_interp_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_interp_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_interp_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_interp",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "0"
+      ]
+    },
+    {
+      "name": "missing_value_snr",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-snr'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr"
+      ]
+    },
+    {
+      "name": "numeric_snr_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_snr_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_snr_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_snr_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_snr_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_snr_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_snr_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_snr_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_snr_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_snr_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_snr_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_snr_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "missing_value_psnr",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-psnr'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr"
+      ]
+    },
+    {
+      "name": "numeric_psnr_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_psnr_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_psnr_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_psnr_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_psnr_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_psnr_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_psnr_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_psnr_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_psnr_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_psnr_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_psnr_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_psnr_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "missing_value_throttle",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-throttle'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle"
+      ]
+    },
+    {
+      "name": "numeric_throttle_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_throttle_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_throttle_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_throttle_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_throttle_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_throttle_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_throttle_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_throttle_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_throttle_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_throttle_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_throttle_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_throttle_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "missing_value_throttle_every",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: unknown option or missing/unexpected value near '-throttle_every'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        ""
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "abc"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "1.5"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "1x"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "+"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "+-1"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "-1"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        " 1"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "1 "
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "2147483648"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "4294967296"
+      ]
+    },
+    {
+      "name": "numeric_throttle_every_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "999999999999999999999999999999999"
+      ]
+    },
+    {
+      "name": "zero_throttle_every",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "0"
+      ]
+    },
+    {
+      "name": "non_power_two_xsearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch must be a power of two within the index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "3"
+      ]
+    },
+    {
+      "name": "non_power_two_ysearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: ysearch must be a power of two within the index range\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "3"
+      ]
+    },
+    {
+      "name": "non_power_two_range_interp",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: range_interp must be a positive power of two\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "3"
+      ]
+    },
+    {
+      "name": "small_subpixel_xsearch_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch and ysearch must be at least 8 with subpixel interpolation; use -nointerp for smaller windows\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "1"
+      ]
+    },
+    {
+      "name": "small_integer_xsearch_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":1,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "1",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "small_subpixel_xsearch_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch and ysearch must be at least 8 with subpixel interpolation; use -nointerp for smaller windows\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "2"
+      ]
+    },
+    {
+      "name": "small_integer_xsearch_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":2,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "2",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "small_subpixel_xsearch_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch and ysearch must be at least 8 with subpixel interpolation; use -nointerp for smaller windows\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "4"
+      ]
+    },
+    {
+      "name": "small_integer_xsearch_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":4,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "4",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "minimum_subpixel_xsearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":8,\"ysearch\":64,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "8"
+      ]
+    },
+    {
+      "name": "small_subpixel_ysearch_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch and ysearch must be at least 8 with subpixel interpolation; use -nointerp for smaller windows\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "1"
+      ]
+    },
+    {
+      "name": "small_integer_ysearch_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":1,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "1",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "small_subpixel_ysearch_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch and ysearch must be at least 8 with subpixel interpolation; use -nointerp for smaller windows\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "2"
+      ]
+    },
+    {
+      "name": "small_integer_ysearch_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":2,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "2",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "small_subpixel_ysearch_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: xsearch and ysearch must be at least 8 with subpixel interpolation; use -nointerp for smaller windows\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "4"
+      ]
+    },
+    {
+      "name": "small_integer_ysearch_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":4,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":1,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "4",
+        "-nointerp"
+      ]
+    },
+    {
+      "name": "minimum_subpixel_ysearch",
+      "pass": true,
+      "failures": [],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"m_nx\":4096,\"m_ny\":8192,\"s_nx\":4096,\"s_ny\":8192,\"x_offset\":-16,\"y_offset\":3,\"xsearch\":64,\"ysearch\":8,\"nxl\":16,\"nyl\":32,\"astretcha\":0.001,\"ri\":2,\"interp_factor\":16,\"nyquist_split\":0,\"snr_thr\":10,\"psnr_thr\":5,\"do_geocode\":0,\"do_blockmedian\":1,\"throttle_ms\":2,\"throttle_every\":64,\"device\":0,\"m_path\":\"master.SLC\",\"s_path\":\"secondary.SLC\"}\n",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "8"
+      ]
+    },
+    {
+      "name": "missing_master_SLC_file",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM: missing required field 'SLC_file'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_master_SLC_file",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:1: empty required field 'SLC_file'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_master_num_rng_bins",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM: missing required field 'num_rng_bins'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_master_num_rng_bins",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:2: empty required field 'num_rng_bins'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_master_num_patches",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM: missing required field 'num_patches'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_master_num_patches",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:3: empty required field 'num_patches'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_master_num_valid_az",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM: missing required field 'num_valid_az'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_master_num_valid_az",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:4: empty required field 'num_valid_az'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_master_PRF",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM: missing required field 'PRF'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_master_PRF",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: empty required field 'PRF'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_SLC_file",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'SLC_file'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_SLC_file",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:1: empty required field 'SLC_file'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_num_rng_bins",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'num_rng_bins'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_num_rng_bins",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: empty required field 'num_rng_bins'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_num_patches",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'num_patches'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_num_patches",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: empty required field 'num_patches'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_num_valid_az",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'num_valid_az'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_num_valid_az",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: empty required field 'num_valid_az'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_PRF",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'PRF'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_PRF",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:5: empty required field 'PRF'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_rshift",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'rshift'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_rshift",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: empty required field 'rshift'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "missing_secondary_ashift",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM: missing required field 'ashift'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "empty_secondary_ashift",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: empty required field 'ashift'\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_rng_bins_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: field 'num_rng_bins' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_rng_bins_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: field 'num_rng_bins' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_rng_bins_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: field 'num_rng_bins' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_rng_bins_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: field 'num_rng_bins' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_rng_bins_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: field 'num_rng_bins' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_rng_bins_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:2: field 'num_rng_bins' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "nonpositive_num_rng_bins_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: secondary PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "nonpositive_num_rng_bins_-1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: secondary PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_patches_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: field 'num_patches' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_patches_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: field 'num_patches' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_patches_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: field 'num_patches' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_patches_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: field 'num_patches' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_patches_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: field 'num_patches' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_patches_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:3: field 'num_patches' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "nonpositive_num_patches_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: secondary PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "nonpositive_num_patches_-1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: secondary PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_valid_az_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: field 'num_valid_az' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_valid_az_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: field 'num_valid_az' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_valid_az_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: field 'num_valid_az' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_valid_az_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: field 'num_valid_az' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_valid_az_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: field 'num_valid_az' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_num_valid_az_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:4: field 'num_valid_az' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "nonpositive_num_valid_az_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: secondary PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "nonpositive_num_valid_az_-1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: secondary PRM num_rng_bins/num_patches/num_valid_az must be positive and the line count must fit int\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_rshift_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: field 'rshift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_rshift_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: field 'rshift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_rshift_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: field 'rshift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_rshift_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: field 'rshift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_rshift_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: field 'rshift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_rshift_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:6: field 'rshift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_ashift_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: field 'ashift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_ashift_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: field 'ashift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_ashift_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: field 'ashift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_ashift_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: field 'ashift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_ashift_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: field 'ashift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "integer_ashift_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM secondary.PRM:7: field 'ashift' must be a decimal integer in [-2147483648, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRM master.PRM:5: field 'PRF' must be a finite, representable number\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRF must be positive in both PRMs\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "float_PRF_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: PRF must be positive in both PRMs\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM"
+      ]
+    },
+    {
+      "name": "corpus_cli_0",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "859227=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_1",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "585854=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_2",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "888436.."
+      ]
+    },
+    {
+      "name": "corpus_cli_3",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "385541.."
+      ]
+    },
+    {
+      "name": "corpus_cli_4",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "977088x42"
+      ]
+    },
+    {
+      "name": "corpus_cli_5",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "462948=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_6",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "754891junk"
+      ]
+    },
+    {
+      "name": "corpus_cli_7",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "216094x42"
+      ]
+    },
+    {
+      "name": "corpus_cli_8",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "90708=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_9",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "820633.."
+      ]
+    },
+    {
+      "name": "corpus_cli_10",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-interp",
+        "79178x42"
+      ]
+    },
+    {
+      "name": "corpus_cli_11",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "230564=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_12",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "517825.."
+      ]
+    },
+    {
+      "name": "corpus_cli_13",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "453766.."
+      ]
+    },
+    {
+      "name": "corpus_cli_14",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -range_interp requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-range_interp",
+        "40626=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_15",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -xsearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-xsearch",
+        "575915.."
+      ]
+    },
+    {
+      "name": "corpus_cli_16",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "432378junk"
+      ]
+    },
+    {
+      "name": "corpus_cli_17",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "286734_"
+      ]
+    },
+    {
+      "name": "corpus_cli_18",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "845551=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_19",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "441024=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_20",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "886144junk"
+      ]
+    },
+    {
+      "name": "corpus_cli_21",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "511038_"
+      ]
+    },
+    {
+      "name": "corpus_cli_22",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "984615x42"
+      ]
+    },
+    {
+      "name": "corpus_cli_23",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "110720_"
+      ]
+    },
+    {
+      "name": "corpus_cli_24",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "144874junk"
+      ]
+    },
+    {
+      "name": "corpus_cli_25",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -nx requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-nx",
+        "325464.."
+      ]
+    },
+    {
+      "name": "corpus_cli_26",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "396277=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_27",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle_every requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle_every",
+        "366738=3"
+      ]
+    },
+    {
+      "name": "corpus_cli_28",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -psnr requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-psnr",
+        "229326.."
+      ]
+    },
+    {
+      "name": "corpus_cli_29",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -ysearch requires an integer in [1, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-ysearch",
+        "391492junk"
+      ]
+    },
+    {
+      "name": "corpus_cli_30",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -throttle requires an integer in [0, 2147483647]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-throttle",
+        "934315x42"
+      ]
+    },
+    {
+      "name": "corpus_cli_31",
+      "pass": true,
+      "failures": [],
+      "returncode": 1,
+      "stderr": "xcorr_cc: -snr requires an integer in [0, 100]\n",
+      "stdout": "",
+      "argv": [
+        "master.PRM",
+        "secondary.PRM",
+        "-snr",
+        "602491junk"
+      ]
+    }
+  ]
+}

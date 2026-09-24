@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "name": "normal",
+      "pass_": true,
+      "returncode": 0,
+      "stderr": "\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:01 eta 00:00:00\n"
+    },
+    {
+      "name": "write_limit",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\nxcorr3: flush /home/tjz/xcorr-cc-output-fix-validation/production/write_limit/.xcorr_cc-8Rv4i0/freq_xcorr.dat: File too large\n"
+    },
+    {
+      "name": "missing_trans",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "\n[--------------------------------]   0.00% 0/35 elapsed 00:00:00 eta 00:00:00\n[################################] 100.00% 35/35 elapsed 00:00:00 eta 00:00:00\nxcorr3: -geocode requires readable trans.dat: No such file or directory\n"
+    },
+    {
+      "name": "directory",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr3: output target is not a regular file: /home/tjz/xcorr-cc-output-fix-validation/production/directory/freq_xcorr.dat\n"
+    },
+    {
+      "name": "device_symlink",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr3: output target is not a regular file: /home/tjz/xcorr-cc-output-fix-validation/production/device_symlink/freq_xcorr.dat\n"
+    },
+    {
+      "name": "unwritable",
+      "pass_": true,
+      "returncode": 1,
+      "stderr": "xcorr3: create output staging directory: Permission denied\n"
+    }
+  ]
+}
