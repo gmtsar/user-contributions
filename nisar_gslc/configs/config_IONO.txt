@@ -1,0 +1,18 @@
+# run4 / run5 / run6 参数；沿用原 run7 的 Gomba 频率组合与滤波顺序。
+# 电离层空间滤波波长，单位 m；与干涉高斯滤波 A=120/B=480 分开。
+filter_wavelength = 20000
+
+# A 解缠相位匹配到 B 后的高斯预滤波波长，单位 m；0 表示关闭。
+# 对应旧 run7 的 prefilter_a_m=1000。
+prefilter_a = 1000
+
+# 按旧 run7 使用 A/B 相干性的均值筛选电离层估计。
+coherence_threshold = 0.1
+coarse_samples_per_wavelength = 8
+surface_tension = 0.1
+
+# run4/run6：是否在 SNAPHU 输入上对低相干空洞做最近邻补相位。
+# 默认 0 保持当前 GSLC 掩膜解缠方式；1 才启用旧流程式插值。
+# 插值值只辅助求解，输出仍恢复原始有效/相干性掩膜。
+interpolate_phase = 0
+nearest_grid_radius = 300

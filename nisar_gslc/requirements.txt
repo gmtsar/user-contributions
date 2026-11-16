@@ -1,0 +1,7 @@
+numpy>=1.23
+h5py>=3.8
+scipy>=1.9
+netCDF4>=1.6
+pyproj>=3.4
+# Longitude/latitude GRD export and plotting (run4-6 defaults):
+rasterio>=1.3

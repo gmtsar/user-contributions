@@ -1,0 +1,34 @@
+# NISAR GSLC LB / frequency B，单位和坐标按 GSLC 地图网格定义。
+frequency = B
+polarization = HH
+
+# 高斯滤波波长，单位 m；与下面的输出间距独立。
+filter_wavelength = 480
+
+# 输出网格间距，单位 m；X=东西，Y=南北，均填正数。
+# 本例原生间距为 X=40 m、Y=5 m，自动计算采样倍数。
+# 默认 120 x 120 m，对应南北/东西 24 x 3 倍采样。
+# 例如设成 40、40 即得到 B 的 40 x 40 m 网格。
+output_spacing_x = 120
+output_spacing_y = 120
+
+# Goldstein：coherence=相干性自适应；fixed=固定指数。
+# 使用 fixed 时可取消 filter_alpha 的注释；coherence 时保持注释。
+goldstein_mode = coherence
+# filter_alpha = 0.5
+filter_patch = 32
+
+stage = unwrap
+correlation_threshold = 0.1
+unwrap_mode = smooth
+defomax = 0
+
+# 暂保留此前对比设置，并非实测独立视数，不随采样倍数自动标定。
+effective_looks = 8
+
+unwrap_tiles_y = 2
+unwrap_tiles_x = 2
+unwrap_overlap_y = 512
+unwrap_overlap_x = 512
+unwrap_nproc = 2
+min_valid_fraction = 0.8
