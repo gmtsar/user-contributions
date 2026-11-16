@@ -1,0 +1,39 @@
+__pycache__/
+.pytest_cache/
+.venv/
+*.py[cod]
+.DS_Store
+
+# Input SAR data and symbolic links; retain the raw/ instructions.
+/raw/*
+!/raw/README.txt
+*.h5
+*.hdf5
+
+# Generated project files and results.
+/LA/
+/LB/
+/LA_iono_corrected*/
+/iono_correction*/
+/iono_mask_preview*/
+/config_IONO.txt
+/gslc_project.json
+/run*_report.json
+/logs/
+/outputs/
+/dist/
+/gmt.history
+/gmt.conf
+
+# Generated rasters, figures, logs, binary work files and release archives.
+*.grd
+*.tif
+*.tiff
+*.pdf
+*.ps
+*.cpt
+*.log
+*.pid
+*.bin
+*.tar.gz
+*.zip

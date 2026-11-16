@@ -1,0 +1,35 @@
+{
+  "description": "Selected A/B parameters from the 2026-10-19 / 2026-10-31 diagnostic comparisons; full common coverage",
+  "notes": [
+    "Gaussian wavelength is not output grid spacing.",
+    "Selected LB output is 120 x 120 m for ionosphere estimation; A remains 40 x 40 m. Both use coherence-adaptive Goldstein with a 32 x 32 pixel patch.",
+    "NCORRLOOKS A=32 / B=8 preserves the comparison settings; these are provisional, not measured independent looks.",
+    "Overlapping SNAPHU tiles are assembled into one phase grid; component labels remain tile-local.",
+    "Different DEM/processing versions in this pair remain an unresolved scientific limitation."
+  ],
+  "common": {
+    "polarization": "HH",
+    "stage": "unwrap",
+    "goldstein_mode": "coherence",
+    "filter_patch": 32,
+    "correlation_threshold": 0.1,
+    "unwrap_mode": "smooth",
+    "defomax": 0.0,
+    "unwrap_overlap": [512, 512],
+    "unwrap_nproc": 2
+  },
+  "bands": {
+    "A": {
+      "looks": [8, 4],
+      "filter_wavelength": 120,
+      "effective_looks": 32,
+      "unwrap_tiles": [4, 4]
+    },
+    "B": {
+      "looks": [24, 3],
+      "filter_wavelength": 480,
+      "effective_looks": 8,
+      "unwrap_tiles": [2, 2]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# NISAR GSLC LA / frequency A，单位和坐标按 GSLC 地图网格定义。
+frequency = A
+polarization = HH
+
+# 高斯滤波波长，单位 m；0 表示关闭高斯加权。
+filter_wavelength = 120
+
+# 输出网格间距，单位 m；X=东西，Y=南北，均填正数。
+# 本例原生间距为 X=10 m、Y=5 m，自动计算采样倍数。
+output_spacing_x = 40
+output_spacing_y = 40
+
+# Goldstein：coherence=相干性自适应；fixed=固定指数。
+# 使用 fixed 时可取消 filter_alpha 的注释；coherence 时保持注释。
+goldstein_mode = coherence
+# filter_alpha = 0.5
+filter_patch = 32
+
+# 最后处理阶段：intf / filter / unwrap。
+stage = unwrap
+correlation_threshold = 0.1
+unwrap_mode = smooth
+defomax = 0
+
+# SNAPHU 统计参数，暂保留此前对比设置，并非实测独立视数。
+effective_looks = 32
+
+# 整幅解缠块数：Y=南北、X=东西；重叠为输出像元数。
+unwrap_tiles_y = 4
+unwrap_tiles_x = 4
+unwrap_overlap_y = 512
+unwrap_overlap_x = 512
+unwrap_nproc = 2
+
+# 原输出块与高斯权重支持的最低有效比例。
+min_valid_fraction = 0.8
